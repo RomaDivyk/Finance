@@ -1,48 +1,21 @@
 import Card from "../UI/Card.js";
 import Button from "../UI/Button.js";
 import styles from "./FormLogIn.module.css";
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const FormLogIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+    reset,
+  } = useForm({
+    mode: "onSubmit",
+  });
 
-  const [error, setError] = useState();
-
-  const emailHandler = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const passwordHandler = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const logInHandler = async () => {
-    let regexEmail = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
-    let regexPassword = new RegExp(
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm
-    );
-
-    if (!regexEmail.test(email)) {
-      console.log("incorect email");
-      setError({
-        title: "Incorect email",
-        message: "Incorect email",
-      });
-    }
-
-    if (!regexPassword.test(password)) {
-      console.log("incorect password");
-      setError({
-        title: "Incorect password",
-        message: "Incorect password",
-      });
-    }
-
-    const data = { email: email, password: password };
-    console.log(data);
-
-    /* const response = await fetch(
+  const onSubmit = async (data) => {
+    const response = await fetch(
       "https://finance-7df36-default-rtdb.firebaseio.com/authentication.json",
       {
         method: "POST",
@@ -50,42 +23,56 @@ const FormLogIn = () => {
       }
     );
     const dataSend = await response.json();
-    console.log(dataSend); */
+    console.log(dataSend);
+    reset();
   };
-
-  const errorHandler = () => {
-    setError(false);
-  };
-
-  const registrationHandler = () => {};
 
   return (
     <>
       <Card className={styles.input}>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label htmlFor="email">Email</label>
             <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={emailHandler}
-              onClick={errorHandler}
+              {...register("email", {
+                required: "Email input is empty!",
+                minLength: {
+                  value: 2,
+                  message: "Min length 2",
+                },
+              })}
             />
-            {error && <p>{error.message}</p>}
+            <div>
+              {errors?.email && <p>{errors?.email.message || "Error !"}</p>}
+            </div>
           </div>
           <div>
             <label htmlFor="password">Password</label>
             <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={passwordHandler}
+              {...register("password", {
+                required: "Password input is empty!",
+                minLength: {
+                  value: 2,
+                  message: "Min length 2",
+                },
+              })}
             />
-            {error && <p>{error.message}</p>}
+            <div>
+              {errors?.password && (
+                <p>{errors?.password.message || "Error!"}</p>
+              )}
+            </div>
           </div>
-          <Button onClick={logInHandler}>Log In</Button>
-          <Button onClick={registrationHandler}>Registration</Button>
+
+          <Button
+            type="submit"
+            /* onClick={logInHandler} */
+          >
+            Log In
+          </Button>
+          <NavLink to="/registration">
+            <Button>Registration</Button>
+          </NavLink>
         </form>
       </Card>
     </>
