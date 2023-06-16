@@ -89,9 +89,10 @@ const FormRegistration = () => {
             <input
               {...register("password", {
                 required: "Password input is empty!",
-                minLength: {
-                  value: 2,
-                  message: "Min length 2",
+                pattern: {
+                  value:
+                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+                  message: "Password invalid!",
                 },
               })}
             />
