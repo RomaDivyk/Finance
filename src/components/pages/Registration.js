@@ -1,10 +1,13 @@
 import FormRegistration from "../Form/FormRegistration";
+import styles from "./Pages.module.css";
 
 const RegistrationPage = () => {
   return (
     <>
-      <h1>REGISTRATION PAGE</h1>
-      <FormRegistration />
+      <div className={styles.pages}>
+        <h1>REGISTRATION PAGE</h1>
+        <FormRegistration />
+      </div>
     </>
   );
 };

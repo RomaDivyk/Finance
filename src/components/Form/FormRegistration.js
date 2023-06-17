@@ -10,6 +10,7 @@ const FormRegistration = () => {
     formState: { errors, isValid },
     handleSubmit,
     reset,
+    watch,
   } = useForm({
     mode: "onSubmit",
   });
@@ -103,14 +104,14 @@ const FormRegistration = () => {
             </div>
           </div>
           <div>
-            {/* Fix repeat password */}
             <label htmlFor="repeatPassword">Repeat password</label>
             <input
               {...register("repeatPassword", {
                 required: "Repeat password input is empty!",
-                minLength: {
-                  value: 2,
-                  message: "Min length 2",
+                validate: (val) => {
+                  if (watch("password") !== val) {
+                    return "Your passwords do no match";
+                  }
                 },
               })}
             />
@@ -120,7 +121,7 @@ const FormRegistration = () => {
               )}
             </div>
           </div>
-          <div>
+          <div className={styles.selects}>
             <label htmlFor="currencyCategory">Currency</label>
             <select
               {...register("currencyCategory", {
@@ -138,7 +139,7 @@ const FormRegistration = () => {
               )}
             </div>
           </div>
-          <div>
+          <div className={styles.selects}>
             <label htmlFor="languageCategory">Language</label>
             <select
               {...register("languageCategory", {

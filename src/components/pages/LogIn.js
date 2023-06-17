@@ -1,10 +1,13 @@
 import FormLogIn from "../Form/FormLogIn";
+import styles from "./Pages.module.css";
 
 const LogInPage = () => {
   return (
     <>
-      <h1>LOGIN PAGE</h1>
-      <FormLogIn />
+      <div className={styles.pages}>
+        <h1>LOGIN PAGE</h1>
+        <FormLogIn />
+      </div>
     </>
   );
 };
