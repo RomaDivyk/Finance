@@ -1,67 +1,72 @@
 import React from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import * as AiIcons from "react-icons/ai";
+import * as ImIcons from "react-icons/im";
+import * as MdIcons from "react-icons/md";
+import * as BiIcons from "react-icons/bi";
+import * as CgIcons from "react-icons/cg";
+import * as GrIcons from "react-icons/gr";
+import * as GiIcons from "react-icons/gi";
 
 export const SidebarData = [
   {
     title: "Home",
     path: "/",
-    icons: <AiIcons.AiFillHome />,
+    icons: <AiIcons.AiOutlineHome />,
     cName: "nav-text",
   },
   {
     title: "Dashboard",
     path: "/dashboard",
-    icons: <AiIcons.AiFillHome />,
+    icons: <AiIcons.AiOutlineDashboard />,
     cName: "nav-text",
   },
   {
-    title: "Сosts",
-    path: "/costs",
-    icons: <AiIcons.AiFillHome />,
+    title: "Expenses",
+    path: "/expenses",
+    icons: <GiIcons.GiExpense />,
     cName: "nav-text",
   },
   {
     title: "Groups",
     path: "/groups",
-    icons: <AiIcons.AiFillHome />,
+    icons: <AiIcons.AiOutlineGroup />,
     cName: "nav-text",
   },
   {
     title: "Plan",
     path: "/plan",
-    icons: <AiIcons.AiFillHome />,
+    icons: <GrIcons.GrPlan />,
     cName: "nav-text",
   },
   {
     title: "User List",
     path: "/userlist",
-    icons: <AiIcons.AiFillHome />,
+    icons: <CgIcons.CgUserList />,
     cName: "nav-text",
   },
   {
     title: "Add default categoty",
     path: "/adddefaulcategory",
-    icons: <AiIcons.AiFillHome />,
+    icons: <BiIcons.BiCategory />,
     cName: "nav-text",
   },
   {
     title: "Leave feedback",
     path: "/leavefeedback",
-    icons: <AiIcons.AiFillHome />,
+    icons: <MdIcons.MdOutlineFeedback />,
     cName: "nav-text",
   },
   {
     title: "Profile",
     path: "/profile",
-    icons: <AiIcons.AiFillHome />,
+    icons: <CgIcons.CgProfile />,
     cName: "nav-text",
   },
   {
     title: "Exit",
     path: "/exit",
-    icons: <AiIcons.AiFillHome />,
+    icons: <IoIcons.IoMdExit />,
     cName: "nav-text",
   },
 ];

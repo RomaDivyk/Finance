@@ -11,7 +11,7 @@ import Content from "./components/Content.js";
 import Footer from "./components/Footer.js";
 import Home from "./components/routes/Home.js";
 import Dashboard from "./components/routes/Dashboard.js";
-import Costs from "./components/routes/Costs.js";
+import Expenses from "./components/routes/Expenses.js";
 import Groups from "./components/routes/Groups.js";
 import Plan from "./components/routes/Plan.js";
 import UserList from "./components/routes/UserList.js";
@@ -88,11 +88,11 @@ function App() {
           <Sidebar />
 
           <Routes>
-            <Route path="/home" element={<Home />}></Route>
+            <Route path="/" element={<Home />}></Route>
             <Route path="/login" element={<LogInPage />}></Route>
             <Route path="/registration" element={<RegistrationPage />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
-            <Route path="/costs" element={<Costs />}></Route>
+            <Route path="/expenses" element={<Expenses />}></Route>
             <Route path="/groups" element={<Groups />}></Route>
             <Route path="/plan" element={<Plan />}></Route>
             <Route path="/userlist" element={<UserList />}></Route>
@@ -106,7 +106,7 @@ function App() {
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </main>
-        <Footer />
+        {/*    <Footer /> */}
       </div>
     </>
   );

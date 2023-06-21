@@ -6,7 +6,11 @@ const NotFound = () => {
     <>
       <div>
         <NavLink to="/home">Return to Home</NavLink>
-        <img src={NotFoundImage} alt="404 Page not found, something wrong :(" />
+        <img
+          src={NotFoundImage}
+          style={{ width: "100%", height: "auto" }}
+          alt="404 Page not found, something wrong :("
+        />
       </div>
     </>
   );
